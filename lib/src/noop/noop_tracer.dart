@@ -7,6 +7,9 @@ import '../trace/span.dart' show SpanLink, SpanContext;
 import '../trace/span_kind.dart' show SpanKind;
 import '../trace/span_status.dart' show SpanStatus;
 
+/// A no-op implementation of [Tracer] that creates [NoopSpan]s.
+///
+/// All methods are no-ops. Use this tracer when tracing is disabled.
 final class NoopTracer implements Tracer {
   const NoopTracer();
 
@@ -22,6 +25,11 @@ final class NoopTracer implements Tracer {
       const NoopSpan();
 }
 
+/// A no-op implementation of [Span] that discards all data.
+///
+/// [isRecording] always returns `false`. All mutation methods are no-ops.
+/// The [spanContext] returns an invalid context with an all-zero [TraceId]
+/// and [SpanId].
 final class NoopSpan implements Span {
   const NoopSpan();
 

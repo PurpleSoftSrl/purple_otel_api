@@ -1,22 +1,53 @@
+/// A set of user-defined key-value pairs propagated across process
+/// boundaries via the W3C Baggage specification.
+///
+/// [Baggage] carries application-defined properties through the distributed
+/// context. It is immutable — mutating methods return new instances.
+///
+/// Construct via:
+/// - [Baggage.empty()]: an empty baggage
+/// - [Baggage.of()]: from an existing map of [BaggageEntry]s
+///
+/// Use [getEntry] to retrieve values, [setEntry] to add or update entries,
+/// and [removeEntry] to remove an entry.
 abstract interface class Baggage {
+  /// Creates an empty [Baggage] with no entries.
   const factory Baggage.empty() = _EmptyBaggage;
 
+  /// Creates a [Baggage] from the given [entries] map.
+  ///
+  /// If [entries] is empty, returns the empty [Baggage].
   factory Baggage.of(Map<String, BaggageEntry> entries) {
     if (entries.isEmpty) return const Baggage.empty();
     return _SdkBaggage(Map<String, BaggageEntry>.unmodifiable(entries));
   }
 
+  /// Returns the number of entries in this baggage.
   int get size;
+
+  /// Returns an iterable of the key-value entries in this baggage.
   Iterable<MapEntry<String, BaggageEntry>> get entries;
+
+  /// Returns the [BaggageEntry] for [key], or `null` if not present.
   BaggageEntry? getEntry(String key);
+
+  /// Returns a new [Baggage] with [value] stored under [key], optionally
+  /// annotated with [metadata].
   Baggage setEntry(String key, String value, {BaggageEntryMetadata? metadata});
+
+  /// Returns a new [Baggage] with [key] removed.
   Baggage removeEntry(String key);
 }
 
+/// A value stored in [Baggage] with optional metadata.
 final class BaggageEntry {
+  /// The entry's value.
   final String value;
+
+  /// Optional metadata describing this entry.
   final BaggageEntryMetadata? metadata;
 
+  /// Creates a [BaggageEntry] with the given [value] and optional [metadata].
   const BaggageEntry(this.value, {this.metadata});
 
   @override
@@ -32,9 +63,15 @@ final class BaggageEntry {
   String toString() => 'BaggageEntry($value)';
 }
 
+/// Metadata associated with a [BaggageEntry].
+///
+/// The metadata provides additional information about the baggage entry,
+/// such as its provenance or propagation constraints.
 final class BaggageEntryMetadata {
+  /// The metadata value.
   final String value;
 
+  /// Creates a [BaggageEntryMetadata] with the given [value].
   const BaggageEntryMetadata(this.value);
 
   @override

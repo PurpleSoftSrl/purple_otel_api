@@ -14,6 +14,10 @@ import '../metrics/meter.dart'
         Measurement;
 import '../common/attributes.dart' show Attributes;
 
+/// A no-op implementation of [Meter] that returns no-op instruments.
+///
+/// All instrument creation methods return no-op implementations that
+/// discard all data. Use this meter when metrics collection is disabled.
 final class NoopMeter implements Meter {
   const NoopMeter();
 
