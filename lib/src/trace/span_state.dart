@@ -27,6 +27,5 @@ final class TraceState {
   }
 
   @override
-  String toString() =>
-      _entries.map((e) => '${e.$1}=${e.$2}').join(',');
+  String toString() => _entries.map((e) => '${e.$1}=${e.$2}').join(',');
 }

@@ -25,7 +25,8 @@ abstract interface class Span {
   void setAttributes(Attributes attributes);
   void addEvent(String name, {DateTime? timestamp, Attributes? attributes});
   void addLink(SpanContext spanContext, {Attributes? attributes});
-  void recordException(Object exception, {StackTrace? stackTrace, Attributes? attributes});
+  void recordException(Object exception,
+      {StackTrace? stackTrace, Attributes? attributes});
   void updateName(String name);
   void end([DateTime? endTime]);
 }
@@ -49,7 +50,8 @@ final class SamplingResult {
 
   static const drop = SamplingResult(SamplingDecision.drop);
   static const recordOnly = SamplingResult(SamplingDecision.recordOnly);
-  static const recordAndSample = SamplingResult(SamplingDecision.recordAndSample);
+  static const recordAndSample =
+      SamplingResult(SamplingDecision.recordAndSample);
 }
 
 abstract interface class Sampler {

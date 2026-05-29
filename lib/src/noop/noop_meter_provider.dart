@@ -6,7 +6,8 @@ final class NoopMeterProvider implements MeterProvider {
   const NoopMeterProvider();
 
   @override
-  Meter get(String name, {String? version, String? schemaUrl}) => const NoopMeter();
+  Meter get(String name, {String? version, String? schemaUrl}) =>
+      const NoopMeter();
 
   @override
   Future<void> forceFlush() async {}

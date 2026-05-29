@@ -1,38 +1,87 @@
-import '../metrics/meter.dart' show Meter, Counter, UpDownCounter, DoubleHistogram, LongHistogram, ObservableDoubleGauge, ObservableLongGauge, ObservableLongCounter, ObservableDoubleCounter, ObservableLongUpDownCounter, ObservableDoubleUpDownCounter, Measurement;
+import '../metrics/meter.dart'
+    show
+        Meter,
+        Counter,
+        UpDownCounter,
+        DoubleHistogram,
+        LongHistogram,
+        ObservableDoubleGauge,
+        ObservableLongGauge,
+        ObservableLongCounter,
+        ObservableDoubleCounter,
+        ObservableLongUpDownCounter,
+        ObservableDoubleUpDownCounter,
+        Measurement;
 import '../common/attributes.dart' show Attributes;
 
 final class NoopMeter implements Meter {
   const NoopMeter();
 
   @override
-  Counter<int> createCounter(String name, {String? unit, String? description}) => const _NoopCounter();
+  Counter<int> createCounter(String name,
+          {String? unit, String? description}) =>
+      const _NoopCounter();
 
   @override
-  UpDownCounter<int> createUpDownCounter(String name, {String? unit, String? description}) => const _NoopUpDownCounter();
+  UpDownCounter<int> createUpDownCounter(String name,
+          {String? unit, String? description}) =>
+      const _NoopUpDownCounter();
 
   @override
-  DoubleHistogram createDoubleHistogram(String name, {String? unit, String? description, List<double>? explicitBucketBoundaries}) => const _NoopDoubleHistogram();
+  DoubleHistogram createDoubleHistogram(String name,
+          {String? unit,
+          String? description,
+          List<double>? explicitBucketBoundaries}) =>
+      const _NoopDoubleHistogram();
 
   @override
-  LongHistogram createLongHistogram(String name, {String? unit, String? description, List<double>? explicitBucketBoundaries}) => const _NoopLongHistogram();
+  LongHistogram createLongHistogram(String name,
+          {String? unit,
+          String? description,
+          List<double>? explicitBucketBoundaries}) =>
+      const _NoopLongHistogram();
 
   @override
-  ObservableDoubleGauge createDoubleObservableGauge(String name, {String? unit, String? description, required List<Measurement<double>> Function() callback}) => const _NoopObservableDoubleGauge();
+  ObservableDoubleGauge createDoubleObservableGauge(String name,
+          {String? unit,
+          String? description,
+          required List<Measurement<double>> Function() callback}) =>
+      const _NoopObservableDoubleGauge();
 
   @override
-  ObservableLongGauge createLongObservableGauge(String name, {String? unit, String? description, required List<Measurement<int>> Function() callback}) => const _NoopObservableLongGauge();
+  ObservableLongGauge createLongObservableGauge(String name,
+          {String? unit,
+          String? description,
+          required List<Measurement<int>> Function() callback}) =>
+      const _NoopObservableLongGauge();
 
   @override
-  ObservableLongCounter createLongObservableCounter(String name, {String? unit, String? description, required List<Measurement<int>> Function() callback}) => const _NoopObservableLongCounter();
+  ObservableLongCounter createLongObservableCounter(String name,
+          {String? unit,
+          String? description,
+          required List<Measurement<int>> Function() callback}) =>
+      const _NoopObservableLongCounter();
 
   @override
-  ObservableDoubleCounter createDoubleObservableCounter(String name, {String? unit, String? description, required List<Measurement<double>> Function() callback}) => const _NoopObservableDoubleCounter();
+  ObservableDoubleCounter createDoubleObservableCounter(String name,
+          {String? unit,
+          String? description,
+          required List<Measurement<double>> Function() callback}) =>
+      const _NoopObservableDoubleCounter();
 
   @override
-  ObservableLongUpDownCounter createLongObservableUpDownCounter(String name, {String? unit, String? description, required List<Measurement<int>> Function() callback}) => const _NoopObservableLongUpDownCounter();
+  ObservableLongUpDownCounter createLongObservableUpDownCounter(String name,
+          {String? unit,
+          String? description,
+          required List<Measurement<int>> Function() callback}) =>
+      const _NoopObservableLongUpDownCounter();
 
   @override
-  ObservableDoubleUpDownCounter createDoubleObservableUpDownCounter(String name, {String? unit, String? description, required List<Measurement<double>> Function() callback}) => const _NoopObservableDoubleUpDownCounter();
+  ObservableDoubleUpDownCounter createDoubleObservableUpDownCounter(String name,
+          {String? unit,
+          String? description,
+          required List<Measurement<double>> Function() callback}) =>
+      const _NoopObservableDoubleUpDownCounter();
 }
 
 final class _NoopCounter implements Counter<int> {
@@ -83,13 +132,15 @@ final class _NoopObservableDoubleCounter implements ObservableDoubleCounter {
   void observe(double value, {Attributes? attributes}) {}
 }
 
-final class _NoopObservableLongUpDownCounter implements ObservableLongUpDownCounter {
+final class _NoopObservableLongUpDownCounter
+    implements ObservableLongUpDownCounter {
   const _NoopObservableLongUpDownCounter();
   @override
   void observe(int value, {Attributes? attributes}) {}
 }
 
-final class _NoopObservableDoubleUpDownCounter implements ObservableDoubleUpDownCounter {
+final class _NoopObservableDoubleUpDownCounter
+    implements ObservableDoubleUpDownCounter {
   const _NoopObservableDoubleUpDownCounter();
   @override
   void observe(double value, {Attributes? attributes}) {}

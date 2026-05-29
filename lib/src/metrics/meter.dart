@@ -2,16 +2,41 @@ import '../common/attributes.dart' show Attributes;
 
 abstract interface class Meter {
   Counter<int> createCounter(String name, {String? unit, String? description});
-  UpDownCounter<int> createUpDownCounter(String name, {String? unit, String? description});
-  DoubleHistogram createDoubleHistogram(String name, {String? unit, String? description, List<double>? explicitBucketBoundaries});
-  LongHistogram createLongHistogram(String name, {String? unit, String? description, List<double>? explicitBucketBoundaries});
+  UpDownCounter<int> createUpDownCounter(String name,
+      {String? unit, String? description});
+  DoubleHistogram createDoubleHistogram(String name,
+      {String? unit,
+      String? description,
+      List<double>? explicitBucketBoundaries});
+  LongHistogram createLongHistogram(String name,
+      {String? unit,
+      String? description,
+      List<double>? explicitBucketBoundaries});
 
-  ObservableDoubleGauge createDoubleObservableGauge(String name, {String? unit, String? description, required List<Measurement<double>> Function() callback});
-  ObservableLongGauge createLongObservableGauge(String name, {String? unit, String? description, required List<Measurement<int>> Function() callback});
-  ObservableLongCounter createLongObservableCounter(String name, {String? unit, String? description, required List<Measurement<int>> Function() callback});
-  ObservableDoubleCounter createDoubleObservableCounter(String name, {String? unit, String? description, required List<Measurement<double>> Function() callback});
-  ObservableLongUpDownCounter createLongObservableUpDownCounter(String name, {String? unit, String? description, required List<Measurement<int>> Function() callback});
-  ObservableDoubleUpDownCounter createDoubleObservableUpDownCounter(String name, {String? unit, String? description, required List<Measurement<double>> Function() callback});
+  ObservableDoubleGauge createDoubleObservableGauge(String name,
+      {String? unit,
+      String? description,
+      required List<Measurement<double>> Function() callback});
+  ObservableLongGauge createLongObservableGauge(String name,
+      {String? unit,
+      String? description,
+      required List<Measurement<int>> Function() callback});
+  ObservableLongCounter createLongObservableCounter(String name,
+      {String? unit,
+      String? description,
+      required List<Measurement<int>> Function() callback});
+  ObservableDoubleCounter createDoubleObservableCounter(String name,
+      {String? unit,
+      String? description,
+      required List<Measurement<double>> Function() callback});
+  ObservableLongUpDownCounter createLongObservableUpDownCounter(String name,
+      {String? unit,
+      String? description,
+      required List<Measurement<int>> Function() callback});
+  ObservableDoubleUpDownCounter createDoubleObservableUpDownCounter(String name,
+      {String? unit,
+      String? description,
+      required List<Measurement<double>> Function() callback});
 }
 
 abstract interface class Counter<T extends num> {
@@ -71,7 +96,8 @@ final class View {
   final String? aggregation;
   final List<String>? attributeKeys;
 
-  const View({this.name, this.instrumentName, this.aggregation, this.attributeKeys});
+  const View(
+      {this.name, this.instrumentName, this.aggregation, this.attributeKeys});
 }
 
 final class MetricCardinalityLimits {

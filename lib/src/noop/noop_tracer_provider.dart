@@ -6,7 +6,8 @@ final class NoopTracerProvider implements TracerProvider {
   const NoopTracerProvider();
 
   @override
-  Tracer get(String name, {String? version, String? schemaUrl}) => const NoopTracer();
+  Tracer get(String name, {String? version, String? schemaUrl}) =>
+      const NoopTracer();
 
   @override
   Future<void> forceFlush() async {}

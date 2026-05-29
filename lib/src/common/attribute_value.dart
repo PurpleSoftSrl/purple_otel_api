@@ -32,10 +32,12 @@ final class _StringAttr extends AttributeValue {
     required T Function(bool value) bool,
     required T Function(List<AttributeValue> values) list,
     required T Function(Uint8List value) bytes,
-  }) => string(value);
+  }) =>
+      string(value);
 
   @override
-  bool operator ==(Object other) => other is _StringAttr && other.value == value;
+  bool operator ==(Object other) =>
+      other is _StringAttr && other.value == value;
   @override
   int get hashCode => Object.hash('StringAttr', value);
   @override
@@ -54,7 +56,8 @@ final class _IntAttr extends AttributeValue {
     required T Function(bool value) bool,
     required T Function(List<AttributeValue> values) list,
     required T Function(Uint8List value) bytes,
-  }) => int(value);
+  }) =>
+      int(value);
 
   @override
   bool operator ==(Object other) => other is _IntAttr && other.value == value;
@@ -76,10 +79,12 @@ final class _DoubleAttr extends AttributeValue {
     required T Function(bool value) bool,
     required T Function(List<AttributeValue> values) list,
     required T Function(Uint8List value) bytes,
-  }) => double(value);
+  }) =>
+      double(value);
 
   @override
-  bool operator ==(Object other) => other is _DoubleAttr && other.value == value;
+  bool operator ==(Object other) =>
+      other is _DoubleAttr && other.value == value;
   @override
   int get hashCode => Object.hash('DoubleAttr', value);
   @override
@@ -98,7 +103,8 @@ final class _BoolAttr extends AttributeValue {
     required T Function(bool value) bool,
     required T Function(List<AttributeValue> values) list,
     required T Function(Uint8List value) bytes,
-  }) => bool(value);
+  }) =>
+      bool(value);
 
   @override
   bool operator ==(Object other) => other is _BoolAttr && other.value == value;
@@ -120,10 +126,12 @@ final class _ListAttr extends AttributeValue {
     required T Function(bool value) bool,
     required T Function(List<AttributeValue> values) list,
     required T Function(Uint8List value) bytes,
-  }) => list(values);
+  }) =>
+      list(values);
 
   @override
-  bool operator ==(Object other) => other is _ListAttr && _listEquals(other.values, values);
+  bool operator ==(Object other) =>
+      other is _ListAttr && _listEquals(other.values, values);
   @override
   int get hashCode => Object.hash('ListAttr', Object.hashAll(values));
   @override
@@ -142,10 +150,12 @@ final class _BytesAttr extends AttributeValue {
     required T Function(bool value) bool,
     required T Function(List<AttributeValue> values) list,
     required T Function(Uint8List value) bytes,
-  }) => bytes(value);
+  }) =>
+      bytes(value);
 
   @override
-  bool operator ==(Object other) => other is _BytesAttr && _bytesEquals(other.value, value);
+  bool operator ==(Object other) =>
+      other is _BytesAttr && _bytesEquals(other.value, value);
   @override
   int get hashCode => Object.hash('BytesAttr', Object.hashAll(value));
   @override

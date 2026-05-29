@@ -149,8 +149,7 @@ void main() {
     });
 
     test('setEntry creates new baggage with entry', () {
-      final baggage = const Baggage.empty()
-          .setEntry('key1', 'value1');
+      final baggage = const Baggage.empty().setEntry('key1', 'value1');
       expect(baggage.size, 1);
       expect(baggage.getEntry('key1')!.value, 'value1');
     });

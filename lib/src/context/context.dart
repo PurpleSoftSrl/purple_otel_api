@@ -26,7 +26,8 @@ final class ContextKey<T> {
   factory ContextKey(String name) => ContextKey._(Symbol(name), name);
 
   @override
-  bool operator ==(Object other) => other is ContextKey && other._symbol == _symbol;
+  bool operator ==(Object other) =>
+      other is ContextKey && other._symbol == _symbol;
   @override
   int get hashCode => _symbol.hashCode;
   @override

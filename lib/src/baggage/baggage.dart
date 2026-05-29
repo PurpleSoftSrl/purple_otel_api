@@ -1,5 +1,3 @@
-
-
 abstract interface class Baggage {
   const factory Baggage.empty() = _EmptyBaggage;
 
@@ -23,7 +21,9 @@ final class BaggageEntry {
 
   @override
   bool operator ==(Object other) =>
-      other is BaggageEntry && other.value == value && other.metadata == metadata;
+      other is BaggageEntry &&
+      other.value == value &&
+      other.metadata == metadata;
 
   @override
   int get hashCode => Object.hash(value, metadata);
@@ -55,7 +55,8 @@ final class _EmptyBaggage implements Baggage {
   @override
   BaggageEntry? getEntry(String key) => null;
   @override
-  Baggage setEntry(String key, String value, {BaggageEntryMetadata? metadata}) =>
+  Baggage setEntry(String key, String value,
+          {BaggageEntryMetadata? metadata}) =>
       Baggage.of({key: BaggageEntry(value, metadata: metadata)});
   @override
   Baggage removeEntry(String key) => this;
@@ -81,6 +82,7 @@ final class _SdkBaggage implements Baggage {
     newEntries[key] = BaggageEntry(value, metadata: metadata);
     return _SdkBaggage(Map<String, BaggageEntry>.unmodifiable(newEntries));
   }
+
   @override
   Baggage removeEntry(String key) {
     if (!_entries.containsKey(key)) return this;
@@ -90,6 +92,7 @@ final class _SdkBaggage implements Baggage {
         ? const _EmptyBaggage()
         : _SdkBaggage(Map<String, BaggageEntry>.unmodifiable(newEntries));
   }
+
   @override
   bool operator ==(Object other) =>
       other is _SdkBaggage && _mapEquals(other._entries, _entries);

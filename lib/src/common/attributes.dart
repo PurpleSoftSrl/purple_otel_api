@@ -28,11 +28,14 @@ final class Attributes {
     if (value is int) return AttributeValue.int(value);
     if (value is double) return AttributeValue.double(value);
     if (value is bool) return AttributeValue.bool(value);
-    if (value is List) return AttributeValue.list(value.map((e) => _convert(e as Object)).toList());
+    if (value is List)
+      return AttributeValue.list(
+          value.map((e) => _convert(e as Object)).toList());
     return AttributeValue.string(value.toString());
   }
 
-  Map<String, AttributeValue> get entries => Map<String, AttributeValue>.unmodifiable(_data);
+  Map<String, AttributeValue> get entries =>
+      Map<String, AttributeValue>.unmodifiable(_data);
 
   AttributeValue? get(String key) => _data[key];
 

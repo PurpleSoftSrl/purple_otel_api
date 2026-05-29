@@ -14,7 +14,8 @@ final class TraceId {
 
   factory TraceId.invalid() => TraceId._(Uint8List(16));
 
-  factory TraceId.fromBytes(Uint8List bytes) => TraceId._(Uint8List.fromList(bytes));
+  factory TraceId.fromBytes(Uint8List bytes) =>
+      TraceId._(Uint8List.fromList(bytes));
 
   bool get isValid => _bytes.any((b) => b != 0);
 
@@ -55,7 +56,8 @@ final class SpanId {
 
   factory SpanId.invalid() => SpanId._(Uint8List(8));
 
-  factory SpanId.fromBytes(Uint8List bytes) => SpanId._(Uint8List.fromList(bytes));
+  factory SpanId.fromBytes(Uint8List bytes) =>
+      SpanId._(Uint8List.fromList(bytes));
 
   bool get isValid => _bytes.any((b) => b != 0);
 
@@ -95,7 +97,8 @@ final class TraceFlags {
   bool get isSampled => _flags & 0x01 != 0;
 
   @override
-  bool operator ==(Object other) => other is TraceFlags && other._flags == _flags;
+  bool operator ==(Object other) =>
+      other is TraceFlags && other._flags == _flags;
 
   @override
   int get hashCode => _flags.hashCode;

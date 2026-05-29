@@ -6,7 +6,8 @@ final class NoopLoggerProvider implements LoggerProvider {
   const NoopLoggerProvider();
 
   @override
-  Logger get(String name, {String? version, String? schemaUrl}) => const NoopLogger();
+  Logger get(String name, {String? version, String? schemaUrl}) =>
+      const NoopLogger();
 
   @override
   Future<void> forceFlush() async {}

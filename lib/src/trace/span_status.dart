@@ -14,7 +14,9 @@ final class SpanStatus {
 
   @override
   bool operator ==(Object other) =>
-      other is SpanStatus && other.code == code && other.description == description;
+      other is SpanStatus &&
+      other.code == code &&
+      other.description == description;
 
   @override
   int get hashCode => Object.hash(code, description);
