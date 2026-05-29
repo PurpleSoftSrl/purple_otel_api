@@ -1,7 +1,13 @@
 name: purple_otel_api
 description: OpenTelemetry API for Dart — interfaces, no-op implementations, and semantic conventions. Zero external dependencies.
 version: 0.1.2
-repository: https://github.com/purplesoftsrl/purple_otel_api'>=3.2.0 <4.0.0'
+repository: https://github.com/purplesoftsrl/purple_otel_api
+homepage: https://github.com/purplesoftsrl/purple_otel_api
+topics: [opentelemetry, observability, tracing, logging, metrics]
+license: AGPL-3.0
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
 
 dependencies:
   meta: ^1.15.0
@@ -9,5 +15,3 @@ dependencies:
 dev_dependencies:
   test: ^1.25.0
   lints: ^6.0.0
-
-
